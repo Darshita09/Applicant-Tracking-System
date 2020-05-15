@@ -1,0 +1,154 @@
+<div class="col-md-13">
+<app-menu></app-menu>
+
+<html>
+    <head>
+      <title></title>
+      <style>
+        body{
+          background-image: url('http://localhost:3000/images/leadco_img/hero_12.jpg');
+          background-repeat:no-repeat;
+          background-size: cover;
+          height: 770px;
+          width: 100%;
+      
+        }
+        .container{
+          width: 300px;
+          height: 230px;
+          margin: 0 auto;
+          margin-bottom: 30%;
+          margin-left: 400px;
+        }
+        .example-form{
+          text-align: center;
+         /* margin-right: 120px; */
+          height: 100%;
+          width: 380%;
+          color: black;
+          background-color:white;
+          margin-top: 10%;
+      }
+      </style>
+    </head>
+
+<body>
+  <div class="container">
+<div class="col-md-9" style="margin-left: 250px">
+ <form (ngSubmit)="onupdateuser(f)" #f="ngForm" class="example-form">
+    <br>
+
+    <div>
+        <h3 style="text-align: center;margin-top: 20px;font-size: 150%;color: black;"><u>Update User Information</u></h3>
+    </div>
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="Email Id:"
+         [(ngModel)]="email_id"
+         id="email"
+         email
+         required
+          name="email"
+          #emailId1="ngModel">
+          <mat-error *ngIf="emailId1.hasError('required')">ID is Required</mat-error>
+      </mat-form-field>
+    </div>
+    
+
+    <div class="form-group">
+
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="Password:"
+         [(ngModel)]="password"
+         id="password"
+         required
+         minlength="8"
+          maxlength="8"
+          name="password"
+          #password1="ngModel">
+        <mat-error *ngIf="password1.hasError('required')">Password is Required</mat-error>
+        <mat-error *ngIf="password1.hasError('minlength')">Minimum 8 character Required</mat-error>
+        <mat-error *ngIf="password1.hasError('maxlength')">Maximum 10 character is allowed</mat-error>
+      </mat-form-field>
+
+    </div>
+  
+
+    <div class="form-group">
+
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="User_name:" [(ngModel)]="user_name" id="user_name" required appForbiddenName="xyz"
+          name="user_name" #name1="ngModel">
+          <mat-error *ngIf="name1.hasError('required')">User Name is Required</mat-error>
+      </mat-form-field>
+
+    </div>
+   
+    <div class="form-group">
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Date Of Birth"  [(ngModel)]="date_of_birth" 
+          name="date_of_birth" #dateofbirth1="ngModel" >
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+          <mat-select placeholder="Role:"  [(value)]="role">
+            <mat-option value="Director">Director</mat-option>
+            <mat-option value="BDM">BDM</mat-option>
+            <mat-option value="BD">BD</mat-option>
+            <mat-option value="Recruiter">Recruiter</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+
+        <h4>Gender</h4>
+        
+        <mat-radio-group>
+          <mat-radio-button  [value]="Male">Male</mat-radio-button>&nbsp;
+          <mat-radio-button [value]="Female">Female</mat-radio-button>
+        </mat-radio-group> 
+      </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput placeholder="Mobile_no:" [(ngModel)]="mobile_no" id="mobile_no" 
+        required minlength="10" maxlength="10"
+        name="mobile_no" #mobileno1="ngModel">
+        <mat-error *ngIf="mobileno1.hasError('required')">Mobile NO is Required</mat-error>
+        <mat-error *ngIf="mobileno1.hasError('minlength')">10 digit Required</mat-error>
+        <mat-error *ngIf="mobileno1.hasError('maxlength')">More than 10 digit not allowed</mat-error>
+      </mat-form-field>
+
+    </div>
+
+   <div class="form-group">
+        <mat-form-field class="example-full-width">
+        <textarea [(ngModel)]="address" matInput placeholder="address" id="address" required minlength="10" maxlength="4000"
+        name="address" #address1="ngModel"></textarea>
+        <mat-error *ngIf="address1.hasError('required')">Address is Required</mat-error>
+        <mat-error *ngIf="address1.hasError('minlength')">Minimum 10 character Required</mat-error>
+        <mat-error *ngIf="address1.hasError('maxlength')">More than 100 characters not allowed</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <button (click)="onSave()" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">Save</button>
+      <button (click)="onback()" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+    </div>
+  </form>
+
+</div>
+</div>
+</body>
+</html> 
+</div>

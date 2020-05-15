@@ -1,0 +1,155 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary"></mat-toolbar>
+    <mat-nav-list style="background-color: lavender; height: 770px; width: 200px">
+       <!-- <a mat-list-item href="#" routerLink='/atsstart'>ATS</a> 
+       <a mat-list-item href="#" routerLink='/login'>Login</a>   -->
+       <div [hidden]="bdflag || recflag || bdmflag " >
+      <a  mat-list-item href="#" routerLink='/userinfo' >User
+        <i class="material-icons">
+          supervisor_account
+          </i>
+      </a>
+    </div>
+    <div [hidden]="recflag">
+      <a mat-list-item routerLink='/leadcompany'>Lead Company
+        <i class="material-icons">
+          group_add
+          </i>
+      </a>
+      </div>
+      <div [hidden]="recflag">
+        <a mat-list-item routerLink='/clientcompany'>Client Company
+          <i class="material-icons">
+            group_add
+            </i>
+        </a>
+        </div>
+      <div [hidden]="recflag">
+      <a mat-list-item routerLink='/jobrequirement'>client Job Req
+        <i class="material-icons">
+          library_books
+          </i>
+      </a>
+      </div>
+      <div  [hidden]="recflag">
+      <a  mat-list-item routerLink='/assignment'>Assignments
+        <i class="material-icons">
+          assignment
+          </i>
+      </a>
+      </div>
+      <div  [hidden]="recflag">
+        <a  mat-list-item routerLink='/submittedassignment' >Submitted Assignment
+          <i class="material-icons">
+            assignment
+            </i>
+        </a>
+        </div>
+        <div  [hidden]="recflag">
+          <a  mat-list-item routerLink='/resumechecking'>Resume Checking
+            <i class="material-icons">
+              line_weight
+              </i>
+          </a>
+          </div>
+      <div  [hidden]="bdflag || bdmflag || directorflag">
+        <a  mat-list-item routerLink='/recruiterassignments' >My Assignments
+          <i class="material-icons">
+            assignment
+            </i>
+        </a>
+        </div>
+      <div [hidden]="bdflag || bdmflag">
+      <a  mat-list-item routerLink='/recruitercalllog' >call Log Screening
+        <i class="material-icons">
+          settings_phone
+          </i>
+      </a>
+      </div>
+      <div  [hidden]="bdflag || bdmflag">
+        <a  mat-list-item routerLink='/candidateresumedata' >Candidate Resume
+          <i class="material-icons">
+            line_weight
+            </i>
+        </a>
+        </div>
+      <div [hidden]="recflag">
+        <a mat-list-item routerLink='/submissionsheet'>Submission Sheet
+        <i class="material-icons">
+          vertical_split
+          </i>
+      </a>
+      </div>
+      <div [hidden]="bdflag || bdmflag || directorflag">
+        <a mat-list-item routerLink='/recruitersubmissionsheet'>Submission Sheet
+        <i class="material-icons">
+          vertical_split
+          </i>
+      </a>
+      </div>
+      <div [hidden]="recflag">
+      <a mat-list-item routerLink='/joiningsheet'>Joining Sheet
+        <i class="material-icons">
+            list_alt
+            </i>
+      </a>
+      </div>
+      <div [hidden]="bdflag || bdmflag || directorflag">
+        <a mat-list-item routerLink='/recruiterjoiningsheet'>Joining Sheet
+          <i class="material-icons">
+              list_alt
+              </i>
+        </a>
+        </div>
+      <div [hidden]="recflag || bdflag || bdmflag">
+      <a mat-list-item routerLink='/invoiceinfo'>Invoice
+        <i class="material-icons">
+          payment
+          </i>
+      </a>
+      </div>
+      <div>
+        <a mat-list-item (click)="OnLogout()">LOG OUT
+          <i class="material-icons">
+            power_settings_new
+            </i>
+        </a>
+        </div>
+      <!-- <a mat-list-item routerLink='/recruiterassignment'>New Assignment</a> -->
+      <!-- <a mat-list-item routerLink='/setcallinfo'>Set Call</a> -->
+      <!-- <div style="margin-left: 10px">
+        <a mat-list-item>
+      <i class="material-icons">
+          notifications_active
+          </i>
+          </a>
+        </div> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>
+          <a class="image" title="image"><img src="http://localhost:3000/images/leadco_img/siyanasymbol.jpg"
+            style="height: 60px; width: 60px">
+          </a>
+        Siyana info solutions</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

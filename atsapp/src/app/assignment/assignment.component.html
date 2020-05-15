@@ -1,0 +1,89 @@
+<div class="col-md-13">
+<app-menu></app-menu>
+
+<div class="col-md-9" style="margin-left: 250px">
+    <div style="text-align: right; font-size: 25px;color: darkblue " *ngFor="let item of userarr"><u>{{item.user_name}}, {{[role]}}</u></div>
+  <div class="mat-row" >
+   <h3 style="text-align: center;margin-top: 20px;font-size: 150%;color: black"><u>ASSIGNMENTS</u></h3>
+  
+  <div class="example-button-row">
+    <a mat-stroked-button routerLink="/assignassignment" style="margin-block-end: 20px;font-size: 16px" color="primary">
+      <i class="material-icons">
+          add
+          </i>
+      Add Assignment</a>
+  </div>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort width='100%'>
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox (change)="checkChange(element)"></mat-checkbox>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="assign_date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Assign Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.assign_date|date: 'dd-MM-yyyy'}} </td>
+    </ng-container>
+
+     <!-- Position Column -->
+    <ng-container matColumnDef="Recruiter_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Recruiter Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.user_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="job_type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Job Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.job_type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
+      <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="company_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Company Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.co_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="submission_date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Submission Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.submission_date|date: 'dd-MM-yyyy'}} </td>
+    </ng-container>
+    <!-- Position Column -->
+    
+    <!-- <ng-container matColumnDef="BD_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> BD Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.fk_BD_id.user_name}} </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="operation">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Operation </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-mini-fab color="warn" (click)="OnDelete(element)">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+        |
+        <button mat-mini-fab color="primary" (click)="OnUpdate1(element)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;">
+    </tr>
+  </table>
+  <br>
+  <br>
+  <mat-paginator [pageSizeOptions]="[8, 10, 12]">
+  </mat-paginator>
+
+  </div>
+</div>
+</div>

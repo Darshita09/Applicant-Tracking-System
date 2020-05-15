@@ -1,0 +1,99 @@
+<div class="container">
+  <h3>INVOICE</h3>
+  <hr>
+
+  <form (ngSubmit)="onsendinvoice()" #f="ngForm" class="example-form">
+
+      <div class="form-group">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Date"  [(ngModel)]="date" name="date" #date1="ngModel" >
+            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+
+    <!-- <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="Company Name:"
+         [(ngModel)]="company_name"
+         id="coname"
+         coname
+         required
+          name="coname"
+          #coname1="ngModel">
+      </mat-form-field>
+    </div>
+    <div [hidden]="coname1?.valid || coname1?.untouched">
+
+      <div [hidden]="!coname1?.errors?.required" class="alert alert-danger">
+        Company Name is required
+      </div>
+    </div> -->
+    <div>
+    <mat-form-field class="example-full-width">
+        <mat-select placeholder="Company Name"  [(ngModel)]="co_name" name="co_name" id="co_name">
+          <mat-option value="item.company_id"   *ngFor="let item of coarr">
+            {{item.co_name}} 
+          </mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  <div class="form-group">
+        <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="No of Candidate:"
+         [(ngModel)]="no_of_position"
+         id="noofposition"
+         required
+          name="noofposition"
+          #noofposition1="ngModel">
+      </mat-form-field>
+
+    </div>
+    <div [hidden]="noofposition?.valid || noofposition1?.untouched">
+
+      <div [hidden]="!noofposition1?.errors?.required" class="alert alert-danger">
+         required
+      </div>
+    </div>
+
+   
+
+   <div class="form-group">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Salary:" [(ngModel)]="salary" id="salary"
+         required 
+          name="salary" #salary1="ngModel">
+    </mat-form-field>
+    </div> 
+    <div [hidden]=" salary1?.valid || salary1?.untouched ">
+
+      <div [hidden]="!salary1?.errors?.required" class="alert alert-danger">
+        Required
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Total:" [(ngModel)]="total" id="total"
+           required 
+            name="total" #salary1="ngModel">
+  
+        </mat-form-field>
+  
+      </div>
+
+    <div class="form-group">
+        <button (click)="onsendinvoice()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightskyblue;font-size: 20px;">Send</button>
+      <!-- <input [disabled]="!f.valid" type="submit" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;"> -->
+      <button (click)="onback()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+    </div>
+  </form>
+
+</div>

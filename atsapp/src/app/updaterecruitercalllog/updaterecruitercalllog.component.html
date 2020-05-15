@@ -1,0 +1,260 @@
+<div class="col-md-13">
+  <app-menu></app-menu>
+  
+  <html>
+      <head>
+        <title></title>
+        <style>
+          body{
+            background-image: url('http://localhost:3000/images/leadco_img/signup-bg.jpg');
+            background-repeat:no-repeat;
+            background-size: cover;
+            height: 1070px;
+            width: 100%;
+        
+          }
+          .container{
+            width: 300px;
+            height: 230px;
+            margin: 0 auto;
+            margin-bottom: 30%;
+            margin-left: 400px;
+          }
+          .example-form{
+            text-align: center;
+           /* margin-right: 120px; */
+            height: 110%;
+            width: 380%;
+            color: black;
+            background-color:white;
+            margin-top: 10%;
+        }
+        </style>
+      </head>
+
+  <body>
+  <div class="container">
+  <div class="col-md-9" style="margin-left: 250px">
+  
+    <form (ngSubmit)="onupdate()" #f="ngForm" class="example-form">
+      <br>
+      <div>
+          <h3 style="text-align: center;margin-top: 20px;font-size: 150%;color: black"><u>Update Call</u></h3>
+      </div>
+    
+        <div class="example-full-width">
+          <!-- <select id="coname" name="coname"  placeholder="Company Name" 
+          [(value)]="company_id">
+            <option value="item.company_id" id="coname" name="coname" 
+            [selected]="co_name==item.co_name" 
+            (click)="OnClick(item.company_id)" *ngFor="let item of coarr">
+              {{item.co_name}}
+            </option>
+            </select> -->
+            <mat-form-field class="example-full-width">
+              <mat-select placeholder="Company Name"  [(value)]="company_id" >
+                <mat-option [value]="item.company_id"  (click)="OnClick(item.company_id)"  
+              
+                *ngFor="let item of coarr">
+                  {{item.co_name}} 
+                </mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+
+        
+            <!-- <mat-form-field class="example-full-width">
+                 <mat-select placeholder="Requirements:"  [(value)]="client_job_id" >
+                  <mat-option [value]="item.client_job_id" *ngFor="let item of jobreqarr" 
+                  (click)="OnRequirement(item.job_type)" 
+                  (click)="OnGetId(item.client_job_id)">
+                  {{item.job_type}}
+                </mat-option> 
+                 
+                 </mat-select>
+               </mat-form-field> -->
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="job type:"
+                [(ngModel)]="job_type"
+                id="jobtype"
+                jobtype
+                required
+                name="jobtype"
+                #jobtype="ngModel">
+          </mat-form-field>
+        <!-- </div> -->
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Job Type"  [(value)]="client_job_id" >
+              <mat-option [value]="item.client_job_id"   
+              (click)="OnRequirement(item.job_type)" 
+              (click)="OnGetId(item.client_job_id)"
+              *ngFor="let item of jobreqarr">
+                {{item.job_type}} 
+              </mat-option>
+              
+            </mat-select>
+          </mat-form-field>
+          </div>
+
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Name:"
+           [(ngModel)]="candidate_name"
+           id="candidatename"
+           candidatename
+           required
+            name="candidatename"
+            #candidatename1="ngModel">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Email:"
+           [(ngModel)]="Email"
+           id="email"
+           email
+           required
+            name="email"
+            #email1="ngModel">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Phone:"
+           [(ngModel)]="Phone"
+           id="phone"
+           phone
+           required
+            name="phone"
+            #phone1="ngModel">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Address:"
+           [(ngModel)]="Address"
+           id="address"
+           address
+           required
+            name="address"
+            #address1="ngModel">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Hometown:"
+           [(ngModel)]="hometown"
+           id="hometown"
+           hometown
+           required
+            name="hometown"
+            #hometown1="ngModel">
+        </mat-form-field>
+      </div>
+      <!-- <div [hidden]="emailId1?.valid || emailId1?.untouched">
+        <div [hidden]="emailId1?.errors?.required" class="alert alert-danger">
+          Email is invalid
+        </div>
+  
+        <div [hidden]="!emailId1?.errors?.required" class="alert alert-danger">
+          Email is required
+        </div>
+      </div> -->
+
+      <div class="example-full-width">
+          <label>Resume</label>
+          <input type="file" class="form-control"  (change)="onChange($event)">
+        </div>
+  
+      <div class="form-group">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Call Date"  [(ngModel)]="call_date" 
+        name="call_date" #calldate1="ngModel" >
+        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+          type="time"
+           placeholder="Call Time:"
+           [(ngModel)]="call_time"
+           id="calltime"
+           calltime
+           required
+            name="calltime"
+            #calltime1="ngModel">
+        </mat-form-field>
+      </div>
+  
+      <!-- <div class="form-group">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Interview Date"  [(ngModel)]="interview_date" 
+            name="interview_date" #interviewdate1="ngModel" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div> -->
+    
+          <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <input
+                matInput
+                type="date"
+                 placeholder="Interview Date:"
+                 [(ngModel)]="interview_date"
+                 id="interviewdate"
+                 interviewdate
+                  name="interviewdate"
+                  #interviewdate1="ngModel">
+              </mat-form-field>
+            </div>
+
+          <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <input
+                matInput
+                 placeholder="Interview Status:"
+                 [(ngModel)]="status"
+                 id="status"
+                 status
+                  name="status"
+                  #status1="ngModel">
+              </mat-form-field>
+            </div>
+
+   <div class="form-group">
+      <button mat-raised-button (click)="onSave()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">Save</button>
+        <!-- <input [disabled]="!f.valid" type="submit" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;"> -->
+        <button mat-raised-button (click)="onback()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+      </div>
+    </form>
+  
+  </div>
+  </div>
+  </body>
+  </html>
+  </div>

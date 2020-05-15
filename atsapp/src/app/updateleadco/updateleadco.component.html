@@ -1,0 +1,133 @@
+<div class="col-md-13">
+  <app-menu></app-menu>
+
+  <html>
+      <head>
+        <title></title>
+        <style>
+          body{
+            background-image: url('http://localhost:3000/images/leadco_img/hero_12.jpg');
+            background-repeat:no-repeat;
+            background-size: cover;
+            height: 770px;
+            width: 100%;
+        
+          }
+          .container{
+            width: 300px;
+            height: 230px;
+            margin: 0 auto;
+            margin-bottom: 30%;
+            margin-left: 400px;
+          }
+          .example-form{
+            text-align: center;
+            height: 150%;
+            width: 380%;
+            color: black;
+            background-color:white;
+            margin-top: 30%;
+        }
+        </style>
+      </head>
+
+<body>
+<div class="container">  
+<div class="col-md-9" style="margin-left: 250px">
+  
+  <form (ngUpdate)="onupdateleadco()" #f="ngForm" class="example-form">
+  <br>
+
+  <div>
+      <h3 style="text-align: center;margin-top: 20px;font-size: 150%;color: black"><u>Update Lead Company Information</u></h3>
+  </div>
+
+        <div class="example-full-width">
+            <label>Company Logo</label>
+            <input type="file" class="form-control"  (change)="onChange($event)">
+          </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="Company Name:"
+         [(ngModel)]="co_name"
+         id="coname"
+         coname
+         required
+          name="coname"
+          #coName1="ngModel">
+          <mat-error *ngIf="coName1.hasError('required')">Company Name is Required</mat-error>
+      </mat-form-field>
+    </div>
+
+  <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="Class of Company:"
+         [(ngModel)]="class_of_company"
+         id="classofco"
+         required
+          name="classofco"
+          #classofco1="ngModel">
+          <mat-error *ngIf="classofco1.hasError('required')">Company of company is Required</mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+      <textarea [(ngModel)]="co_address" matInput placeholder="Company Address" 
+      id="coaddress" required minlength="10" maxlength="100"
+      name="coaddress" #coaddress1="ngModel"></textarea>
+      <mat-error *ngIf="coaddress1.hasError('required')">Address is Required</mat-error>
+      <mat-error *ngIf="coaddress1.hasError('minlength')">Address must contain 10 characters</mat-error>
+      <mat-error *ngIf="coaddress1.hasError('maxlength')">Address cannot be more than 100 character</mat-error>
+    </mat-form-field>
+  </div>
+
+    <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input type="number" matInput placeholder="Company Phone no:" [(ngModel)]="co_phone_no" 
+          id="cophoneno" required minlength="10" maxlength="10"
+          name="cophoneno" #cophoneno1="ngModel">
+          <mat-error *ngIf="cophoneno1.hasError('required')">Phone No is Required</mat-error>
+          <mat-error *ngIf="cophoneno1.hasError('minlength')">10 digit Required</mat-error>
+          <mat-error *ngIf="cophoneno1.hasError('maxlength')">More than 10 digit not allowed</mat-error>
+        </mat-form-field>
+  
+      </div>
+  
+     <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Company Email-Id:" [(ngModel)]="co_email_id"
+         id="coemail" required appForbiddenName="xyz"
+          name="coemail" #coemail1="ngModel">
+          <mat-error *ngIf="coemail1.hasError('required')">Email is Required</mat-error>
+          <mat-error *ngIf="coemail1.hasError('forbiddenName')">Email Id cannot be xyz</mat-error>
+      </mat-form-field>
+      </div>
+    
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Company website:" [(ngModel)]="co_website"
+         id="cowebsite" required appForbiddenName="xyz"
+          name="cowebsite" #cowebsite1="ngModel">
+          <mat-error *ngIf="cowebsite1.hasError('forbiddenName')">Website cannot be xyz</mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-group">
+      <button (click)="onupdate()" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">Save</button>
+      <button (click)="onback()" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+    </div>
+  </form>
+
+</div>
+</div>
+</body>
+</html>
+</div>

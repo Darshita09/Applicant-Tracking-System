@@ -1,0 +1,172 @@
+<div class="container">
+  <h3>Update Lead Company Information</h3>
+  <hr>
+
+  <form (ngUpdate)="onupdateleadco()" #f="ngForm" class="example-form">
+
+      <div class="form-group">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Company Logo:" [(ngModel)]="co_logo"
+             id="cologo" required 
+              name="cologo" #cologo1="ngModel">
+    
+          </mat-form-field>
+    
+        </div>
+        <!-- <div [hidden]=" cowebsite1?.valid || cowebsite1?.untouched ">
+    
+           <div [hidden]="!coemail1?.errors?.required" class="alert alert-danger">
+            Email Id is required
+          </div> 
+    
+          <div [hidden]="!cowebsite1?.errors?.forbiddenName" class="alert alert-danger">
+              Website Name cannot be xyz
+            </div>
+        </div> -->
+    
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="Company Name:"
+         [(ngModel)]="co_name"
+         id="coname"
+         coname
+         required
+          name="coname"
+          #coName1="ngModel">
+      </mat-form-field>
+    </div>
+     <div [hidden]="coName1?.valid || coName1?.untouched">
+  
+      <div [hidden]="!coName1?.errors?.required" class="alert alert-danger">
+        Company Name is required
+      </div>
+    </div> 
+
+  <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="Class of Company:"
+         [(ngModel)]="class_of_company"
+         id="classofco"
+         required
+          name="classofco"
+          #classofco1="ngModel">
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+      <textarea [(ngModel)]="co_address" matInput placeholder="Company Address" 
+      id="coaddress" required minlength="10" maxlength="4000"
+      name="coaddress" #coaddress1="ngModel"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div [hidden]="coaddress1?.valid || coaddress1?.untouched">
+
+      <div [hidden]="!coaddress1?.errors?.minlength" class="alert alert-danger">
+          Address must contails 10 characters
+      </div>
+
+      <div [hidden]="!coaddress1?.errors?.maxlength" class="alert alert-danger">
+          Address can not be 4000 characters
+      </div>
+      <div [hidden]="!coaddress1?.errors?.required" class="alert alert-danger">
+          Address is required
+      </div>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input type="number" matInput placeholder="Company Phone no:" [(ngModel)]="co_phone_no" 
+          id="cophoneno" required minlength="10" maxlength="10"
+          name="cophoneno" #cophoneno1="ngModel">
+        </mat-form-field>
+  
+      </div>
+  
+      <div [hidden]="cophoneno1?.valid || cophoneno1?.untouched">
+  
+          <div [hidden]="!cophoneno1?.errors?.minlength" class="alert alert-danger">
+            Mobile_no must have 10 charachters
+          </div>
+  
+          <div [hidden]="!cophoneno?.errors?.maxlength" class="alert alert-danger">
+            Mobile_no must contain only 10 charachters
+          </div>
+          <div [hidden]="!cophoneno1?.errors?.required" class="alert alert-danger">
+            Mobile_no is required
+          </div>
+      </div>
+  
+     <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Company Email-Id:" [(ngModel)]="co_email_id"
+         id="coemail" required appForbiddenName="xyz"
+          name="coemail" #coemail1="ngModel">
+      </mat-form-field>
+      </div>
+    <div [hidden]=" coemail1?.valid || coemail1?.untouched ">
+
+    <div [hidden]="!coemail1?.errors?.required" class="alert alert-danger">
+        Email Id is required
+      </div>
+
+      <div [hidden]="!coemail1?.errors?.forbiddenName" class="alert alert-danger">
+          Email Id cannot be xyz
+        </div>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Company website:" [(ngModel)]="co_website"
+         id="cowebsite" required appForbiddenName="xyz"
+          name="cowebsite" #cowebsite1="ngModel">
+
+      </mat-form-field>
+
+    </div>
+    <div [hidden]=" cowebsite1?.valid || cowebsite1?.untouched ">
+
+      <!-- <div [hidden]="!coemail1?.errors?.required" class="alert alert-danger">
+        Email Id is required
+      </div> -->
+
+      <div [hidden]="!cowebsite1?.errors?.forbiddenName" class="alert alert-danger">
+          Website Name cannot be xyz
+        </div>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Isclient:" [(ngModel)]="isclient"
+         id="isclient" required 
+          name="isclient" #isclient1="ngModel">
+
+      </mat-form-field>
+
+    </div>
+    <!-- <div [hidden]=" cowebsite1?.valid || cowebsite1?.untouched ">
+
+       <div [hidden]="!coemail1?.errors?.required" class="alert alert-danger">
+        Email Id is required
+      </div> 
+
+      <div [hidden]="!cowebsite1?.errors?.forbiddenName" class="alert alert-danger">
+          Website Name cannot be xyz
+        </div>
+    </div> -->
+
+
+    <div class="form-group">
+      <input [disabled]="!f.valid" type="update" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">
+      <button (click)="onback()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+    </div>
+  </form>
+
+</div>

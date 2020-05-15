@@ -1,0 +1,139 @@
+<div class="col-md-13">
+  <app-menu></app-menu>
+
+  <html>
+      <head>
+        <title></title>
+        <style>
+          body{
+            background-image: url('http://localhost:3000/images/leadco_img/header.jpg');
+            background-repeat:no-repeat;
+            background-size: cover;
+            height: 600%;
+            width: 100%;
+        
+          }
+          .container{
+            width: 300px;
+            height: 230px;
+            margin: 0 auto;
+            margin-bottom: 30%;
+            margin-left: 400px;
+          }
+          .example-form{
+            text-align: center;
+           /* margin-right: 120px; */
+            height: 150%;
+            width: 380%;
+            color: black;
+            background-color:white;
+            margin-top: 40%;
+        }
+        </style>
+      </head>
+
+<body>
+<div class="container">
+<div class="col-md-9" style="margin-left: 250px">
+  
+<body>
+  <div>
+  <form (ngSubmit)="onsendinvoice()" #f="ngForm" class="example-form">
+  <br>
+
+  <div>
+    <h3 style="text-align: center">INVOICE</h3>
+  </div>
+      <div class="form-group">
+          <mat-form-field style="width: 55%" appearance="fill">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker"  [(ngModel)]="date" name="date" #date1="ngModel" >
+            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+
+    <div>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Company Name</mat-label>
+        <mat-select   [(ngModel)]="co_name" name="co_name" id="co_name">
+          <mat-option value="item.company_id" (click)="OnClick(item.company_id)"   *ngFor="let item of coarr">
+            {{item.co_name}} 
+          </mat-option>
+          
+        </mat-select>
+      </mat-form-field>&nbsp;
+
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Requirement</mat-label>
+        <mat-select   [(value)]="client_job_id" >
+         <mat-option value="item.client_job_id" *ngFor="let item of jobreqarr" (click)="OnRequirement(item.job_type)" (click)="OnGetId(item.client_job_id)">{{item.job_type}}</mat-option> 
+        
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  <div class="form-group">
+        <mat-form-field class="example-full-width"  style="width: 55%" appearance="fill">
+          <mat-label>No of Candidate</mat-label>
+            <!-- <label>No of Candidate</label> -->
+          <input
+        matInput
+        [(ngModel)]="count"
+         id="count"
+         required
+          name="count"
+          #count1="ngModel">
+      </mat-form-field>
+
+    </div>
+    
+   
+
+   <div class="form-group">
+    <mat-form-field class="example-full-width" style="width: 55%" appearance="fill">
+        <mat-label>Total Salary</mat-label>  
+      <input matInput  [(ngModel)]="salary" id="salary"
+         required 
+          name="salary" #salary1="ngModel">
+          <mat-error *ngIf="salary1.hasError('required')">Salary is Required</mat-error>
+    </mat-form-field>
+    </div> 
+   
+
+<div>
+  <mat-form-field  class="example-full-width" style="width: 55%" appearance="fill">
+      <mat-label>Off to Salary</mat-label>
+    <mat-select  [(ngModel)]="offsalary" name="offsalary" id="offsalary">
+      <mat-option value="10" (click)="OnGetAmt(offsalary)">10%</mat-option>
+      <mat-option value="15" (click)="OnGetAmt(offsalary)">15%</mat-option>
+      <mat-option value="20" (click)="OnGetAmt(offsalary)">20%</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width" style="width: 55%" appearance="fill">
+          <mat-label>Payment</mat-label>  
+        <input matInput  [(ngModel)]="total" id="total"
+           required 
+            name="total" #salary1="ngModel">
+  
+        </mat-form-field>
+  
+      </div>
+
+    <div class="form-group">
+        <!-- <button (click)="onsendinvoice()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightskyblue;font-size: 20px;">Send</button> -->
+      <input [disabled]="!f.valid" type="submit" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">
+      <button (click)="onback()" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+    </div>
+  </form>
+  </div>
+  </body>
+
+</div>
+</div>
+</body>
+</html>
+</div>

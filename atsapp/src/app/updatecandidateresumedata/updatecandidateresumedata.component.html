@@ -1,0 +1,270 @@
+<div class="col-md-13">
+  <app-menu></app-menu>
+
+  <html>
+      <head>
+        <title></title>
+        <style>
+          body{
+            background-image: url('http://localhost:3000/images/leadco_img/hero_12.jpg');
+            background-repeat:no-repeat;
+            background-size: cover;
+            height: 1650px;
+            width: 100%;
+        
+          }
+          .container{
+            width: 300px;
+            height: 230px;
+            margin: 0 auto;
+            margin-bottom: 30%;
+            margin-left: 400px;
+          }
+          .example-form{
+            text-align: center;
+            height: 150%;
+            width: 380%;
+            color: black;
+            background-color:white;
+            margin-top: 5%;
+        }
+        </style>
+      </head>
+
+<body>
+<div class="container">
+<div class="col-md-9" style="margin-left: 250px">
+
+<form (ngSubmit)="OnAddCandiResume()" #f="ngForm" class="example-form">
+<br>
+
+<div>
+  <h3 style="text-align: center;margin-top: 20px;font-size: 150%;color: black;"><u>Update Candidate Resume Data</u></h3>
+</div>
+<div class="form-group">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Assignment Number</mat-label>
+    <mat-select   [(value)]="Assignment_id" >
+      <mat-option [value]="item.Assignment_id"  (click)="OnAssignID(item.Assignment_id)" 
+      (click)="OnGetCompany(item.Assignment_id)"
+      *ngFor="let item of assignidarr">
+        {{item.Assignment_id}} 
+      </mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+</div>
+
+  <div class="form-group">
+
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Company Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="co_name"
+        id="coname"
+        coname
+        required
+        name="co_name"
+        #coname="ngModel">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Company Name</mat-label>
+    <mat-select  [(value)]="company_id" >
+      <mat-option [value]="item.company_id" 
+      (click)="OngetName(item.co_name)"  
+      (click)="OnClick(item.company_id)"
+      *ngFor="let item of cobyassignIDarr">
+        {{item.co_name}} 
+      </mat-option>
+      
+    </mat-select>
+  </mat-form-field>
+      <!-- <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Company Name</mat-label>
+        <mat-select   [(value)]="company_id" >
+          <mat-option [value]="item.company_id"  (click)="OnClick(item.company_id)"  
+          *ngFor="let item of cobyassignIDarr">
+            {{item.co_name}} 
+          </mat-option>
+          
+        </mat-select>
+      </mat-form-field> -->
+    </div>
+
+    <div class="form-group">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Job Type</mat-label>
+            <input
+              matInput
+              [(ngModel)]="job_type"
+              id="jobtype"
+              jobtype
+              required
+              name="jobtype"
+              #jobtype="ngModel">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Requirements</mat-label>
+             <mat-select  [(value)]="client_job_id" >
+              <mat-option [value]="item.client_job_id" *ngFor="let item of jobreqarr"
+              (click)="OnGetJobtype(item.job_type)"  
+              (click)="OnGetId(item.client_job_id)">{{item.job_type}}</mat-option> 
+             
+             </mat-select>
+           </mat-form-field>
+    </div>
+    
+    <div class="form-group">
+
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Candidate Name</mat-label>
+        <mat-select   [(value)]="candidate_id" >
+          <mat-option [value]="item.candidate_id"  
+          (click)="OnGetCandiID(item.candidate_id)"
+          *ngFor="let item of candidatearr">
+            {{item.candidate_name}} 
+          </mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+<div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input
+    matInput
+     placeholder="Candidate Email:"
+     [(ngModel)]="candidate_Email"
+     id="candidateemail"
+     required
+      name="candidateemail"
+      #candidateemail1="ngModel">
+      <mat-error *ngIf="candidateemail1.hasError('required')">Email Required</mat-error>
+  </mat-form-field>
+</div>
+
+<div class="form-group">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input type="text" matInput placeholder="Candidate Phone:" [(ngModel)]="candidate_Phone" 
+      id="candidatephone" required
+      name="candidatephone" #candidatephone1="ngModel">
+      <mat-error *ngIf="candidatephone1.hasError('required')">Required</mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div class="form-group">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input type="text" matInput placeholder="Candidate Address:" [(ngModel)]="candidate_Address" 
+        id="candidateaddrs" required
+        name="candidateaddrs" #candidateaddrs1="ngModel">
+        <mat-error *ngIf="candidateaddrs1.hasError('required')">Required</mat-error>
+      </mat-form-field>
+  
+    </div>
+
+    <div class="form-group">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input type="text" matInput placeholder="Candidate Hometown:" [(ngModel)]="candidate_hometown" 
+          id="candidatehometown" required
+          name="candidatehometown" #candidatehometown1="ngModel">
+          <mat-error *ngIf="candidatehometown1.hasError('required')">Required</mat-error>
+        </mat-form-field>
+    
+      </div>
+
+ <div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input matInput placeholder="Candidate Experience:" [(ngModel)]="candidate_experience"
+     id="candiexperience" required
+      name="candiexperience" #candiexperience1="ngModel"> 
+      <mat-error *ngIf="candiexperience1.hasError('required')">Experience Required</mat-error>
+  </mat-form-field>
+  </div>
+
+<div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input matInput placeholder="Current Salary" [(ngModel)]="current_salary"
+     id="currentsalary" required 
+      name="currentsalary" #currentsalary1="ngModel">
+      <mat-error *ngIf="currentsalary1.hasError('required')">Current Salary is Required</mat-error>
+  </mat-form-field>
+
+</div>
+
+<div class="form-group">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="Expected Salary" [(ngModel)]="expected_salary"
+       id="expectedsalary" required 
+        name="expectedtsalary" #expectedsalary1="ngModel">
+        <mat-error *ngIf="expectedsalary1.hasError('required')">Expected Salary is Required</mat-error>
+    </mat-form-field>
+  
+  </div>
+
+<div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input matInput placeholder="Candidate Education:" [(ngModel)]="candi_education"
+     id="candieducation" required 
+      name="candieducation" #candieducation1="ngModel">
+      <mat-error *ngIf="candieducation1.hasError('required')">Education Required</mat-error>
+  </mat-form-field>
+
+</div> 
+
+<div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input matInput placeholder="Last Used:" [(ngModel)]="candi_last_used"
+     id="candilastused"  
+      name="candilastused" #candilastused1="ngModel">
+
+  </mat-form-field>
+</div>
+
+<div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input matInput placeholder="Technical Skill:" [(ngModel)]="candi_technical_skill"
+     id="canditechnicalskill" required 
+      name="canditechnicalskill" #canditechnicalskill1="ngModel">
+      <mat-error *ngIf="canditechnicalskill1.hasError('required')">Technical Skill is Required</mat-error>
+  </mat-form-field>
+
+</div>
+ 
+<div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input matInput placeholder="Special Skill:" [(ngModel)]="candi_special_skill"
+     id="candispecialskill"  
+      name="candispecialskill" #candispecialskill1="ngModel">
+
+  </mat-form-field>
+
+</div>
+ 
+<div class="form-group">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input matInput placeholder="Job Description:" [(ngModel)]="candi_job_desc"
+     id="candijobdesc" required 
+      name="candijobdesc" #candijobdesc1="ngModel">
+      <mat-error *ngIf="candijobdesc1.hasError('required')">Required</mat-error>
+  </mat-form-field>
+
+</div>
+
+<div class="form-group">
+    <button mat-raised-button (click)="onSave()" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">Save</button>
+  <button mat-raised-button (click)="onback()" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+</div>
+</form>
+
+</div>
+</div>
+</body>
+</html>
+</div>

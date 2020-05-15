@@ -1,0 +1,85 @@
+<div class="col-md-13">
+  <app-menu></app-menu>
+  
+  <div class="col-md-9" style="margin-left: 250px">
+    <div class="mat-row" >
+     <h3 style="text-align: center;margin-top: 20px;font-size: 150%;color: black;"><u>NEW ASSIGNMENT</u></h3>
+    
+    <div class="example-button-row">
+      <a mat-stroked-button routerLink="/recruiterassignments" style="margin-block-end: 20px" color="primary">
+        <!-- <i class="material-icons">
+            add
+            </i> -->
+        GOT IT</a>
+      <!-- <div class="button-row"> -->
+      <!-- <button mat-raised-button color="primary" (click)="OnSubmit(element)"> -->
+          <!-- <i class="material-icons">
+              delete
+              </i>  -->
+         <!-- SUBMIT
+      </button> -->
+      <!-- </div> -->
+    </div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort width='100%'>
+  
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox (change)="checkChange(element)"></mat-checkbox>
+        </td>
+      </ng-container>
+  
+       <!-- Position Column -->
+      <ng-container matColumnDef="company_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Company Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.co_name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="job_type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Job Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.job_type}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="no_of_position">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No Of Position </th>
+        <td mat-cell *matCellDef="let element"> {{element.no_of_position}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="duration">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
+        <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+      </ng-container>
+  
+      <!-- Position Column -->
+      
+      <!-- <ng-container matColumnDef="BD_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> BD Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.fk_BD_id.user_name}} </td>
+      </ng-container> -->
+  
+      <ng-container matColumnDef="submit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Submit </th>
+        <td mat-cell *matCellDef="let element">
+         
+          <button mat-mini-fab color="primary" (click)="OnSend(element)">
+            <span class="glyphicon glyphicon-send"></span>
+          </button>
+
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;">
+      </tr>
+    </table>
+    <br>
+    <br>
+    <mat-paginator [pageSizeOptions]="[3, 5]">
+    </mat-paginator>
+  
+    </div>
+  </div>
+  </div>

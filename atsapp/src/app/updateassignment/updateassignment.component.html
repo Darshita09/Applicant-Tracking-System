@@ -1,0 +1,246 @@
+<div class="col-md-13">
+  <app-menu></app-menu>
+  <html>
+      <head>
+        <title></title>
+        <style>
+          body{
+            background-image: url('http://localhost:3000/images/leadco_img/bg1.jpg');
+            background-repeat:no-repeat;
+            background-size: cover;
+            height: 770px;
+            width: 100%;
+        
+          }
+          .container{
+            width: 300px;
+            height: 230px;
+            margin: 0 auto;
+            margin-bottom: 30%;
+            margin-left: 400px;
+          }
+          .example-form{
+            text-align: center;
+           /* margin-right: 120px; */
+            height: 150%;
+            width: 380%;
+            color: black;
+            background-color:white;
+            margin-top: -10%;
+        }
+        </style>
+      </head>
+
+<body>
+<div class="container">  
+<div class="col-md-9" style="margin-left: 250px">
+  
+    <form (ngSubmit)="onupdateAssi()" #f="ngForm" class="example-form">
+    <br>
+
+    <div>
+        <h3 style="text-align: center;margin-top: 20px;font-size: 150%;color: black;"><u>Update Assignment</u></h3>
+    </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" 
+           [(ngModel)]="assign_date" name="assign_date" #assigndate1="ngModel" >
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        </div>
+
+    <div class="form-group">
+       <!-- <div class="example-full-width">
+            <select id="username" name="username"  placeholder="Recruiter Name">
+              <option id="username" name="username" 
+              [selected]="user_name==item.user_name"
+              *ngFor="let item of userarr">
+                {{item.user_name}}                                    
+              </option>
+              </select>
+          </div> -->
+          <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Recruiter Name</mat-label>
+              <mat-select  [(value)]="email_id" >
+                <mat-option [value]="item.email_id"   
+              
+                *ngFor="let item of userarr">
+                  {{item.user_name}} 
+                </mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+        </div>
+
+          <div class="form-group">
+            <!-- <div class="example-full-width">
+                 <select id="coname" name="coname"  placeholder="Company Name" 
+                 [(value)]="company_id">
+                   <option *ngFor="let item of coarr"  value="item.company_id" 
+                   id="coname" name="coname" 
+                   [selected]="co_name==item.co_name" >
+                     {{item.co_name}}
+                   </option>
+                   </select>
+               </div> -->
+               <!-- <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  placeholder="Company Name:"
+                  [(ngModel)]="co_name"
+                  id="coname"
+               
+                  name="coname"
+                  #coname1="ngModel">
+            </mat-form-field> -->
+               <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Company Name</mat-label>
+                <mat-select   [(value)]="company_id" >
+                  <mat-option [value]="item.company_id"  (click)="OnClick(item.company_id)"  
+                
+                  *ngFor="let item of coarr">
+                    {{item.co_name}} 
+                  </mat-option>
+                  
+                </mat-select>
+              </mat-form-field>
+              </div>
+
+              <div class="form-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Job Type</mat-label>
+                    <input
+                      matInput
+                      [(ngModel)]="job_type"
+                      id="jobtype"
+                      jobtype
+                      required
+                      name="jobtype"
+                      #jobtype="ngModel">
+                </mat-form-field>
+              <!-- </div> -->
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Job Type</mat-label>
+                  <mat-select  [(value)]="client_job_id" >
+                    <mat-option [value]="item.client_job_id"   
+                    (click)="OnRequirement(item.job_type)" 
+                    (click)="OnGetId(item.client_job_id)"
+                    *ngFor="let item of jobreqarr">
+                      {{item.job_type}} 
+                    </mat-option>
+                    
+                  </mat-select>
+                </mat-form-field>
+                </div>
+             <!-- <div class="form-group"> -->
+              <!-- <mat-form-field class="example-full-width">
+                <mat-select id=job name=job [(ngModel)]="job_type" [(value)]="client_job_id">
+                  <mat-option [value]="item.client_job_id" *ngFor="let item of jobreqarr" 
+                  (click)="OnRequirement(item.job_type)" 
+                  (click)="OnGetId(item.client_job_id)">
+                    {{item.job_type}}
+                  </mat-option> 
+                </mat-select>
+              </mat-form-field>
+            </div>  -->
+              
+            <div class="form-group">
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>No Of Position</mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="no_of_position"
+                    id="noofposition"
+                    noofposition
+                    required
+                    name="noofposition"
+                    #noofposition="ngModel">
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>No of Position</mat-label>
+                <mat-select [(value)]="no_of_position">
+                  <mat-option [value]="item.no_of_position" 
+                  *ngFor="let item of positions">
+                    {{item.no_of_position}}
+                  </mat-option>  
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+   
+
+          <!-- <mat-form-field class="example-full-width">
+            <mat-select placeholder="Company Name" >
+              <mat-option value="item.company_id"  (click)="OnClick(item.company_id)"  
+              id="coname" name="coname" [(ngModel)]="co_name==item.co_name" *ngFor="let item of coarr">
+                {{item.co_name}} 
+              </mat-option> -->
+              
+            <!-- </mat-select>
+          </mat-form-field> -->
+     
+
+  <!-- <div class="form-group">
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Requirements:"  [(value)]="client_job_id" >
+        <mat-option value="item.client_job_id" *ngFor="let item of jobreqarr"
+         (click)="OnRequirement(item.job_type)" (click)="OnGetId(item.client_job_id)">
+         {{item.job_type}}</mat-option> 
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="No of Position"  [(value)]="no_of_position">
+        <mat-option value="no_of_position" *ngFor="let item of positions">{{item.no_of_position}}</mat-option>  
+      </mat-select>
+    </mat-form-field>
+  </div> -->
+                 <!-- <div class="form-group">
+                  <mat-form-field class="example-full-width" *ngFor="let item of jobreqarr">
+                    {{item.no_of_position}}
+                      <input
+                        matInput
+                        placeholder="No of Position:"
+                        [(ngModel)]="no_of_position"
+                        id="noofposition"
+                        noofposition
+                        required
+                        name="noofposition"
+                        #noofposition1="ngModel">
+                        
+                  </mat-form-field>
+                </div> -->
+  
+  <div class="form-group">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Duration</mat-label>
+        <input
+          matInput
+          [(ngModel)]="duration"
+          id="duration"
+          duration
+          required
+          name="duration"
+          #duration1="ngModel">
+    </mat-form-field>
+  </div>
+ 
+  <!-- <div class="form-group">
+  <button mat-mini-fab (click)="OpenNote()" style="height: 50px; width: 50px;" color="primary">Note</button>
+  </div> -->
+        
+      <div class="form-group">
+        <button mat-raised-button (click)="onsave()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">Save</button>
+        
+        <!-- <input [disabled]="!f.valid" type="submit" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;"> -->
+        <button mat-raised-button (click)="onback()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+      </div>
+    </form>
+  
+  </div>
+  </div>
+  </body>
+  </html>
+</div>

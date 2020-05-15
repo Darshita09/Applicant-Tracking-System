@@ -1,0 +1,181 @@
+<div class="col-md-13">
+  <app-menu></app-menu>
+  
+  <html>
+      <head>
+        <title></title>
+        <style>
+          body{
+            background-image: url('http://localhost:3000/images/leadco_img/signup-bg.jpg');
+            background-repeat:no-repeat;
+            background-size: cover;
+            height: 770px;
+            width: 100%;
+        
+          }
+          .container{
+            width: 300px;
+            height: 230px;
+            margin: 0 auto;
+            margin-bottom: 30%;
+            margin-left: 400px;
+          }
+          .example-form{
+            text-align: center;
+           /* margin-right: 120px; */
+            height: 110%;
+            width: 380%;
+            color: black;
+            background-color:white;
+            margin-top: -10%;
+        }
+        </style>
+      </head>
+
+  <body>
+  <div class="container">
+  <div class="col-md-9" style="margin-left: 250px">
+  
+    <form (ngSubmit)="onsetcall()" #f="ngForm" class="example-form">
+    
+
+    <!-- <div> -->
+        <h3 style="text-align: center;margin-top: 20px;font-size: 150%;color: black;"><u>Set Call</u></h3>
+    <!-- </div> -->
+      <div>
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Company Name"  [(value)]="company_id" >
+              <mat-option value="item.company_id"   
+              (click)="OnClick(item.company_id)" *ngFor="let item of coarr">
+                {{item.co_name}} 
+              </mat-option>
+              
+            </mat-select>
+          </mat-form-field>
+
+        
+            <mat-form-field class="example-full-width">
+                 <mat-select placeholder="Requirements:"  [(value)]="client_job_id" >
+                  <mat-option value="item.client_job_id" *ngFor="let item of jobreqarr" 
+                  (click)="OnRequirement(item.job_type)" (click)="OnGetId(item.client_job_id)">
+                  {{item.job_type}}</mat-option> 
+                 
+                 </mat-select>
+               </mat-form-field>
+        </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Name:"
+           [(ngModel)]="candidate_name"
+           id="candidatename"
+           candidatename
+           required
+            name="candidatename"
+            #candidatename1="ngModel">
+            <mat-error *ngIf="candidatename1.hasError('required')">Candidate Name is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Email:"
+           [(ngModel)]="Email"
+           id="email"
+           email
+           required
+            name="email"
+            #email1="ngModel">
+            <mat-error *ngIf="email1.hasError('required')">Email is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="Phone" matInput placeholder="Candidate Phone" id="phone" required minlength="10" maxlength="10"
+        name="phone" #phone1="ngModel">
+        <mat-error *ngIf="phone1.hasError('required')">Address is Required</mat-error>
+        <mat-error *ngIf="phone1.hasError('minlength')">10 digit Required</mat-error>
+        <mat-error *ngIf="phone1.hasError('maxlength')">More than 10 digit not allowed</mat-error>
+      </mat-form-field>
+    </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Address:"
+           [(ngModel)]="Address"
+           id="address"
+           address
+           required
+           minlength="10" maxlength="100"
+            name="address"
+            #address1="ngModel">
+            <mat-error *ngIf="address1.hasError('required')">Address is Required</mat-error>
+      <mat-error *ngIf="address1.hasError('minlength')">Address must contain 10 characters</mat-error>
+      <mat-error *ngIf="address1.hasError('maxlength')">Address cannot be more than 100 character</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+           placeholder="Candidate Hometown:"
+           [(ngModel)]="hometown"
+           id="hometown"
+           hometown
+           required
+            name="hometown"
+            #hometown1="ngModel">
+            <mat-error *ngIf="hometown1.hasError('required')">Hometown is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="example-full-width">
+          <label>Resume</label>
+          <input type="file" class="form-control"  (change)="onChange($event)">
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Date"  [(ngModel)]="call_date" name="call_date" 
+            #calldate1="ngModel" >
+            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input
+          matInput
+          type="time"
+           placeholder="Call Time:"
+           [(ngModel)]="call_time"
+           id="calltime"
+           calltime
+           required
+            name="calltime"
+            #calltime1="ngModel">
+            <mat-error *ngIf="calltime1.hasError('required')">Call Time is Required</mat-error>
+        </mat-form-field>
+      </div>
+    
+   <div class="form-group">
+        <input [disabled]="!f.valid" type="submit" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">
+        <button mat-raised-button (click)="onback()" style="width: 30%;height: 60%;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+      </div>
+    </form>
+  
+  </div>
+  </div>
+  </body>
+  </html>
+  </div>

@@ -1,0 +1,179 @@
+<div class="container">
+  <h1>Sign Up Form</h1>
+  <hr>
+
+  <form (ngSubmit)="onsign()" #f="ngForm" class="example-form">
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+         placeholder="Email Id:"
+         [(ngModel)]="email_id"
+         id="email"
+         email
+         required
+          name="email"
+          #emailId1="ngModel">
+      </mat-form-field>
+    </div>
+    <div [hidden]="emailId1?.valid || emailId1?.untouched">
+      <div [hidden]="emailId1?.errors?.required" class="alert alert-danger">
+        Email is invalid
+      </div>
+
+      <div [hidden]="!emailId1?.errors?.required" class="alert alert-danger">
+        Email is required
+      </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+
+
+      <mat-form-field class="example-full-width">
+        <input
+        matInput
+        type="password"
+         placeholder="Password:"
+         [(ngModel)]="password"
+         id="password"
+         required
+         minlength="8"
+          maxlength="8"
+          name="password"
+          #password1="ngModel">
+          <!-- <button mat-icon-button matSuffix [attr.aria-label]="passwordToggleLabel"
+          (click)="showPassword= !showPassword">
+          <mat-icon>{{passwordToggleIcon}}</mat-icon>
+        </button> -->
+      </mat-form-field>
+
+    </div>
+    <div [hidden]="password1?.valid || password1?.untouched">
+
+      <div [hidden]="!password1?.errors?.minlength" class="alert alert-danger">
+        Password must have 8 charachters
+      </div>
+
+      <div [hidden]="!password1?.errors?.maxlength" class="alert alert-danger">
+        Password must contain only 8 charachters
+      </div>
+      <div [hidden]="!password1?.errors?.required" class="alert alert-danger">
+        Password is required
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="User_name:" [(ngModel)]="user_name" id="user_name"
+         required appForbiddenName="xyz"
+          name="user_name" #name1="ngModel">
+
+      </mat-form-field>
+
+    </div>
+    <div [hidden]=" name1?.valid || name1?.untouched ">
+
+
+      <div [hidden]="!name1?.errors?.required" class="alert alert-danger">
+        User_Name is required
+      </div>
+
+
+      <div [hidden]="!name1?.errors?.forbiddenName" class="alert alert-danger">
+          User_Name cannot be xyz
+        </div>
+    </div>
+
+    <div class="form-group">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Date-of-Birth"  [(ngModel)]="date_of_birth" name="date_of_birth" #dateofbirth1="ngModel" >
+      <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      
+
+
+      <mat-form-field class="example-full-width">
+          <mat-select placeholder="Role:"  [(value)]="role">
+            <mat-option value="Director">Director</mat-option>
+            <mat-option value="BDM">BDM</mat-option>
+            <mat-option value="BD">BD</mat-option>
+            <mat-option value="Recruiter">Recruiter</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+
+        <h4>Gender</h4>
+        <!-- <mat-radio-group class="example-radio-group" [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
+          <mat-radio-button class="example-radio-button" *ngFor="let type of types" [value]="type">
+            {{type}}
+          </mat-radio-button>
+        </mat-radio-group> -->
+        <mat-radio-group>
+          <mat-radio-button value="1">Male</mat-radio-button>
+          <mat-radio-button value="2">Female</mat-radio-button>
+        </mat-radio-group> 
+      </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput placeholder="Mobile_no:" [(ngModel)]="mobile_no" id="mobile_no" required minlength="10" maxlength="10"
+        name="mobile_no" #mobile1="ngModel">
+      </mat-form-field>
+
+    </div>
+
+    <div [hidden]="mobile1?.valid || mobile1?.untouched">
+
+        <div [hidden]="!mobile1?.errors?.minlength" class="alert alert-danger">
+          Mobile_no must have 10 charachters
+        </div>
+
+        <div [hidden]="!mobile1?.errors?.maxlength" class="alert alert-danger">
+          Mobile_no must contain only 10 charachters
+        </div>
+        <div [hidden]="!mobile1?.errors?.required" class="alert alert-danger">
+          Mobile_no is required
+        </div>
+      </div>
+
+   <div class="form-group">
+        <mat-form-field class="example-full-width">
+        <textarea [(ngModel)]="address" matInput placeholder="address" id="address" required minlength="10" maxlength="4000"
+        name="address" #address1="ngModel"></textarea>
+      </mat-form-field>
+    </div>
+
+
+    <div [hidden]="address1?.valid || address1?.untouched">
+
+        <div [hidden]="!address1?.errors?.minlength" class="alert alert-danger">
+            Address must contails 10 characters
+        </div>
+
+        <div [hidden]="!address1?.errors?.maxlength" class="alert alert-danger">
+            Address can not be 4000 characters
+        </div>
+        <div [hidden]="!address1?.errors?.required" class="alert alert-danger">
+            Address is required
+        </div>
+      </div>
+    <div class="form-group">
+      <input [disabled]="!f.valid" type="submit" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightgreen;font-size: 20px;">
+      <button (click)="onback()" style="width: 10%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: lightcoral;font-size: 20px;">Cancel</button>
+    </div>
+  </form>
+
+</div>
